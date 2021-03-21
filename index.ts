@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect, useState } from 'react';
 
 export const useStopTyping = (
-  ref: MutableRefObject<HTMLInputElement | HTMLTextAreaElement | undefined>,
+  ref: MutableRefObject<HTMLInputElement | HTMLTextAreaElement | null>,
   callback: () => void,
   setTimeoutMs: number
 ) => {
