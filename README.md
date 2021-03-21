@@ -1,6 +1,12 @@
 # useStopTyping
 React hook for running callback when input stops.
 
+## Installation
+```
+npm install use-stop-typing
+```
+
+
 ## Usage
 ```tsx
 import { useRef } from 'react';
