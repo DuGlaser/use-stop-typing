@@ -1,4 +1,4 @@
-.prettierrc
 tsconfig.json
+.prettierrc.js
 .eslintrc.js
 index.ts
