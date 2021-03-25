@@ -2,4 +2,5 @@ tsconfig.json
 .prettierrc.js
 .eslintrc.js
 index.ts
-index.test.ts
+index.test.tsx
+.github/
