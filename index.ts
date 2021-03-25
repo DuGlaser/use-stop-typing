@@ -6,7 +6,7 @@ export const useStopTyping = (
   setTimeoutMs: number
 ) => {
   const [refValue, setRefValue] = useState('');
-  let typingTimer: NodeJS.Timeout;
+  let typingTimer: ReturnType<typeof setTimeout>;
 
   const handleUpdate = () => {
     if (ref.current && refValue !== ref.current.value) {
