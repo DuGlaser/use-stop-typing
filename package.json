@@ -1,6 +1,6 @@
 {
   "name": "use-stop-typing",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "repository": "ssh://git@github.com/DuGlaser/use-stop-typing.git",
   "author": "DuGlaser <duglaser0618@gmail.com>",
   "license": "MIT",
@@ -12,7 +12,7 @@
     "lint": "eslint index.ts",
     "lint:fix": "eslint index.ts --fix",
     "test": "jest",
-    "publish": "npm run build && npm publish"
+    "release": "npm run build && npm publish"
   },
   "dependencies": {
     "react": "^17.0.1"
