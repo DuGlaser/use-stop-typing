@@ -11,7 +11,8 @@
     "build": "tsc",
     "lint": "eslint index.ts",
     "lint:fix": "eslint index.ts --fix",
-    "test": "jest"
+    "test": "jest",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "react": "^17.0.1"
