@@ -5,6 +5,7 @@
     "declarationMap": true,
     "sourceMap": true,
     "lib": ["dom", "ES2018"],
+    "jsx": "react",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -15,5 +16,6 @@
     "emitDecoratorMetadata": true,
     "outDir": "dist"
   },
-  "include": ["index.ts"]
+  "include": ["index.ts"],
+  "exclude": ["**/*.test.ts"]
 }
