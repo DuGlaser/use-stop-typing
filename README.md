@@ -8,6 +8,7 @@ npm install use-stop-typing
 
 
 ## Usage
+In this example, 'console.log("Update")' will be executed 2000ms after the input is stopped!
 ```tsx
 import { useRef } from 'react';
 import { useStopTyping } from 'use-stop-typing';
