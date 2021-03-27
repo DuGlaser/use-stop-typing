@@ -38,5 +38,5 @@ export const useStopTyping = (
         ref.current.removeEventListener('blur', handleUpdate);
       }
     };
-  }, [ref, refValue]);
+  }, [ref, refValue, handleUpdate]);
 };
