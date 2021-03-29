@@ -68,6 +68,11 @@ describe('useStopTyping', () => {
 
     fireEvent.blur(input);
     expect(callback).toHaveBeenCalledTimes(1);
+
+    act(() => {
+      jest.advanceTimersByTime(defaultDelay);
+    });
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 
   test('input arrow key', () => {

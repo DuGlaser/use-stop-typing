@@ -11,6 +11,7 @@ export const useStopTyping = (
   const handleUpdate = () => {
     if (ref.current && refValue !== ref.current.value) {
       callback();
+      clearTimeout(typingTimer);
       setRefValue(ref.current.value);
     }
   };
