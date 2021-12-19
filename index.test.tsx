@@ -1,17 +1,29 @@
-import React, { useRef } from 'react';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { useStopTyping } from './index';
+import React, { useRef, useState } from 'react';
 import { act } from 'react-dom/test-utils';
+
+import { useStopTyping } from './index';
 
 const callback = jest.fn();
 const defaultDelay = 2000;
 
 const Test: React.VFC = () => {
+  const [value, setValue] = useState('text');
   const ref = useRef<HTMLInputElement>(null);
   useStopTyping(ref, callback, defaultDelay);
 
-  return <input type="text" data-testid="input" ref={ref} />;
+  return (
+    <input
+      type="text"
+      data-testid="input"
+      value={value}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value);
+      }}
+      ref={ref}
+    />
+  );
 };
 
 const setup = () => {
@@ -88,6 +100,18 @@ describe('useStopTyping', () => {
       jest.advanceTimersByTime(defaultDelay);
     });
     expect(callback).toHaveBeenCalledTimes(1);
+  });
+
+  test('focus text and blur', () => {
+    const { input } = setup();
+
+    fireEvent.focus(input);
+
+    act(() => {
+      jest.advanceTimersByTime(defaultDelay);
+    });
+    fireEvent.blur(input);
+    expect(callback).toHaveBeenCalledTimes(0);
   });
 
   test('input "text" and push backspace and input "t"', () => {
