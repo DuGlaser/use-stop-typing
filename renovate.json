@@ -3,7 +3,7 @@
     "config:base"
   ],
   "lockFileMaintenance": {
-    "enabled": true,
+    "enabled": true
   },
   "packageRules": [
     {
