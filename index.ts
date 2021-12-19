@@ -39,7 +39,7 @@ export const useStopTyping = (
 
     return () => {
       if (ref.current) {
-        ref.current.addEventListener('focus', handleUpdateValue);
+        ref.current.removeEventListener('focus', handleUpdateValue);
         ref.current.removeEventListener('keyup', handleKeyUp);
         ref.current.removeEventListener('keydown', handleKeyDown);
         ref.current.removeEventListener('blur', handleUpdate);
