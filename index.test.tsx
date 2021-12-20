@@ -114,6 +114,33 @@ describe('useStopTyping', () => {
     expect(callback).toHaveBeenCalledTimes(0);
   });
 
+  test('input and delete', () => {
+    const { input } = setup();
+
+    fireEvent.focus(input);
+    userEvent.type(input, 't');
+    act(() => {
+      jest.advanceTimersByTime(defaultDelay);
+    });
+    expect('textt').toBe(input.value);
+    expect(callback).toHaveBeenCalledTimes(1);
+
+    userEvent.type(input, '{backspace}');
+    act(() => {
+      jest.advanceTimersByTime(defaultDelay);
+    });
+    expect('text').toBe(input.value);
+    expect(callback).toHaveBeenCalledTimes(2);
+
+    userEvent.type(input, 't');
+    act(() => {
+      jest.advanceTimersByTime(defaultDelay);
+    });
+    fireEvent.blur(input);
+    expect('textt').toBe(input.value);
+    expect(callback).toHaveBeenCalledTimes(3);
+  });
+
   test('input "text" and push backspace and input "t"', () => {
     const { input } = setup();
     userEvent.type(input, 'text');

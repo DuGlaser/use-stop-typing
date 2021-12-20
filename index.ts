@@ -1,22 +1,22 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 
 export const useStopTyping = (
   ref: RefObject<HTMLInputElement | HTMLTextAreaElement | null>,
   callback: () => void,
   setTimeoutMs: number
 ) => {
-  const [refValue, setRefValue] = useState(ref.current?.value ?? '');
+  const refValue = useRef(ref.current?.value ?? '');
   let typingTimer: ReturnType<typeof setTimeout>;
 
   const handleUpdateValue = () => {
-    setRefValue(ref.current?.value ?? '');
+    refValue.current = ref.current?.value ?? '';
   };
 
   const handleUpdate = () => {
-    if (ref.current && refValue !== ref.current.value) {
+    if (ref.current && refValue.current !== ref.current.value) {
       callback();
       clearTimeout(typingTimer);
-      setRefValue(ref.current.value);
+      handleUpdateValue();
     }
   };
 
@@ -45,5 +45,5 @@ export const useStopTyping = (
         ref.current.removeEventListener('blur', handleUpdate);
       }
     };
-  }, [ref, refValue, handleUpdate]);
+  }, [ref, handleUpdate]);
 };
